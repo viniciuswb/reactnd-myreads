@@ -20,7 +20,12 @@ class BookShelfList extends Component {
   }
 
   bookShelfChange = (book, shelf) => {
-    update(book, shelf)
+    update(book, shelf).then(() => {
+      book.shelf = shelf
+      let updatedBooks = this.state.books.filter(bk => bk.id !== book.id)
+      updatedBooks.push(book)
+      this.setState({books: updatedBooks})
+    })
   }
 
   render() {
