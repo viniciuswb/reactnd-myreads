@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {getAll} from '../../utils/BooksAPI'
+import {getAll, update} from '../../utils/BooksAPI'
 import BookShelf from './BookShelf/BookShelf'
 import './BookShelfList.css'
 
@@ -19,6 +19,10 @@ class BookShelfList extends Component {
     })
   }
 
+  bookShelfChange = (book, shelf) => {
+    update(book, shelf)
+  }
+
   render() {
     return (
       <div className="list-books">
@@ -30,6 +34,7 @@ class BookShelfList extends Component {
                   key={index}
                   title={shelf.name}
                   books={this.state.books.filter(book => book.shelf === shelf.type)}
+                  onBookShelfChange={this.bookShelfChange}
                 />
               ))
           }
