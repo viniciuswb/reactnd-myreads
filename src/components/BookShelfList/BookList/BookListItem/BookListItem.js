@@ -1,4 +1,5 @@
 import React from 'react'
+import BookShelfChanger from './BookShelfChanger/BookShelfChanger'
 import './BookListItem.css'
 
 const BookListItem = ({book, onBookShelfChange}) => {
@@ -11,15 +12,7 @@ const BookListItem = ({book, onBookShelfChange}) => {
             height: 193,
             backgroundImage: `url(${book.imageLinks.thumbnail})`
           }} />
-          <div className="book-shelf-changer">
-            <select value={book.shelf} onChange={(e) => onBookShelfChange(book, e.target.value)}>
-              <option value="none" disabled>Move to...</option>
-              <option value="currentlyReading">Currently Reading</option>
-              <option value="wantToRead">Want to Read</option>
-              <option value="read">Read</option>
-              <option value="none">None</option>
-            </select>
-          </div>
+          <BookShelfChanger book={book} onBookShelfChange={onBookShelfChange}/>
         </div>
         <div className="book-title">{book.title}</div>
         <div className="book-authors">{book.authors.join(', ')}</div>
