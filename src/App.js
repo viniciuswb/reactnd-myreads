@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import Aux from './Hoc/Aux'
+import Aux from './hoc/Aux'
 
-import Header from './Components/Header/Header'
-import BookShelfList from './Components/BookShelfList/BookShelfList'
+import Header from './components/Header/Header'
+import BookShelfList from './components/BookShelfList/BookShelfList'
 
 class App extends Component {
   render() {
