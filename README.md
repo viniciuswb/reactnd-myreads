@@ -1,0 +1,1 @@
+Repository for MyReads project of Udacity React Nanodegree.
