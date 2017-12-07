@@ -3,7 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Aux from './Hoc/Aux'
 
 import Header from './Components/Header/Header'
-import ListBooks from './Components/ListBooks/ListBooks'
+import BookShelfList from './Components/BookShelfList/BookShelfList'
 
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
       <MuiThemeProvider>
         <Aux>
           <Header/>
-          <ListBooks/>
+          <BookShelfList/>
         </Aux>
       </MuiThemeProvider>
     )

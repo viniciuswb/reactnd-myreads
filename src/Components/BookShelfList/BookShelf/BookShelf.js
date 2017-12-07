@@ -1,6 +1,6 @@
 import React from 'react'
 import './BookShelf.css'
-import BooksList from '../Books/BooksList'
+import BooksList from '../BooksList/BooksList'
 
 const BookShelf = ({title}) => {
   return (

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import BookShelf from './BookShelf/BookShelf'
 import './BookShelfList.css'
 
-class ListBooks extends Component {
+class BookShelfList extends Component {
   state = {
     shelfs: [
       {
@@ -36,4 +36,4 @@ class ListBooks extends Component {
   }
 }
 
-export default ListBooks
+export default BookShelfList
