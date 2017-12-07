@@ -2,10 +2,10 @@ import React from 'react'
 import BookListItem from './BookListItem/BookListItem'
 import './BookList.css'
 
-const BooksListItem = () => {
+const BooksListItem = ({books}) => {
   return (
     <ol className="books-grid">
-      <BookListItem/>
+      {books.map((book, index) => <BookListItem key={index} title={book.title} image={book.imageLinks.thumbnail} authors={book.authors} />)}
     </ol>
   )
 }
