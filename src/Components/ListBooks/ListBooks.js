@@ -1,23 +1,39 @@
-import React from 'react'
-
+import React, {Component} from 'react'
+import BookShelf from './BookShelf/BookShelf'
 import './ListBooks.css'
 
-const ListBooks = () => {
-  return (
-    <div className="list-books">
-      <div className="list-books-content">
-        <div className="bookshelf">
-          <h2 className="bookshelf-title">Currently Reading</h2>
-        </div>
-        <div className="bookshelf">
-          <h2 className="bookshelf-title">Want to Read</h2>
-        </div>
-        <div className="bookshelf">
-          <h2 className="bookshelf-title">Read</h2>
+class ListBooks extends Component {
+  state = {
+    shelfs: [
+      {
+        name: 'Currently Reading'
+      },
+      {
+        name: 'Want to Read'
+      },
+      {
+        name: 'Read'
+      }
+    ]
+  }
+
+  render() {
+    return (
+      <div className="list-books">
+        <div className="list-books-content">
+          {
+            this.state.shelfs.map(
+              (shelf, index) => (
+                <BookShelf
+                  key={index}
+                  title={shelf.name}
+                />
+              ))
+          }
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default ListBooks
