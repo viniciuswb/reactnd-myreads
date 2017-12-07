@@ -8,10 +8,7 @@ const BooksListItem = ({books}) => {
       {books.map((book, index) => (
         <BookListItem
           key={index}
-          title={book.title}
-          image={book.imageLinks.thumbnail}
-          authors={book.authors}
-          shelf={book.shelf}
+          book={book}
         />
       ))}
     </ol>
