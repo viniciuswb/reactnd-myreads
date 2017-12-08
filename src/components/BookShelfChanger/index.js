@@ -17,6 +17,7 @@ const BookShelfChanger = ({book, onBookShelfChange}) => {
           onChange={
             (event, index, value) => onBookShelfChange(book, value)
           }
+          selectedMenuItemStyle={{color: '#1e5a9f'}}
         >
           <MenuItem value="none" primaryText="Move to..." disabled/>
           <MenuItem value="currentlyReading" primaryText="Currently Reading"/>
