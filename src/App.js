@@ -13,7 +13,7 @@ class App extends Component {
         <Aux>
           <Header/>
           <Route exact path="/" component={BookShelfList} />
-          <Route exact path="/search" component={SearchBooks} />
+          <Route path="/search" component={SearchBooks} />
         </Aux>
       </MuiThemeProvider>
     )

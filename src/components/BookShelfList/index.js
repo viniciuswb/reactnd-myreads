@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import {getAll, update} from '../../utils/BooksAPI'
 import BookShelfListItem from './BookShelfListItem'
 import './BookShelfList.css'
@@ -45,7 +46,7 @@ class BookShelfList extends Component {
           }
         </div>
         <div className="open-search">
-          <a>Add a book</a>
+          <Link to="/search">Add a book</Link>
         </div>
       </div>
     )
