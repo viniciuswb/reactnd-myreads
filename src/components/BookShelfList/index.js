@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {FloatingActionButton} from 'material-ui'
+import AddIcon from 'material-ui/svg-icons/content/add'
 import {getAll, update} from '../../utils/BooksAPI'
 import BookShelfListItem from './BookShelfListItem'
 import './BookShelfList.css'
@@ -7,9 +8,9 @@ import './BookShelfList.css'
 class BookShelfList extends Component {
   state = {
     shelfs: [
-      { name: 'Currently Reading', type: 'currentlyReading' },
-      { name: 'Want to Read', type: 'wantToRead' },
-      { name: 'Read', type: 'read' }
+      {name: 'Currently Reading', type: 'currentlyReading'},
+      {name: 'Want to Read', type: 'wantToRead'},
+      {name: 'Read', type: 'read'}
     ],
     books: []
   }
@@ -46,7 +47,13 @@ class BookShelfList extends Component {
           }
         </div>
         <div className="open-search">
-          <Link to="/search">Add a book</Link>
+          <FloatingActionButton
+            className="book-shelf-changer"
+            backgroundColor="#1e5a9f"
+            onClick={() => this.props.history.push('/search') }
+          >
+            <AddIcon/>
+          </FloatingActionButton>
         </div>
       </div>
     )
