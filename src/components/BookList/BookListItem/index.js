@@ -1,5 +1,5 @@
 import React from 'react'
-import BookShelfChanger from './BookShelfChanger/BookShelfChanger'
+import BookShelfChanger from '../../BookShelfChanger'
 import './BookListItem.css'
 
 const BookListItem = ({book, onBookShelfChange}) => {

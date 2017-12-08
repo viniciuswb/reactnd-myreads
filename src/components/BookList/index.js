@@ -1,5 +1,5 @@
 import React from 'react'
-import BookListItem from './BookListItem/BookListItem'
+import BookListItem from './BookListItem'
 import './BookList.css'
 
 const BooksListItem = ({books, onBookShelfChange}) => {

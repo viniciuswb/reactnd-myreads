@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {getAll, update} from '../../utils/BooksAPI'
-import BookShelf from './BookShelf/BookShelf'
+import BookShelfListItem from './BookShelfListItem'
 import './BookShelfList.css'
 
 class BookShelfList extends Component {
@@ -35,7 +35,7 @@ class BookShelfList extends Component {
           {
             this.state.shelfs.map(
               (shelf, index) => (
-                <BookShelf
+                <BookShelfListItem
                   key={index}
                   title={shelf.name}
                   books={this.state.books.filter(book => book.shelf === shelf.type)}

@@ -1,6 +1,6 @@
 import React from 'react'
-import './BookShelf.css'
-import BookList from '../BookList/BookList'
+import './BookShelfListItem.css'
+import BookList from '../../BookList'
 
 const BookShelf = ({title, books, onBookShelfChange}) => {
   return (
