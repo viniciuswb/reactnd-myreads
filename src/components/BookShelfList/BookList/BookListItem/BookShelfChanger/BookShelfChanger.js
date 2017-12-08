@@ -1,16 +1,21 @@
 import React from 'react'
+import {SelectField, MenuItem} from 'material-ui';
 import './BookShelfChanger.css'
 
 const BookShelfChanger = ({book, onBookShelfChange}) => {
   return (
     <div className="book-shelf-changer">
-      <select value={book.shelf} onChange={(e) => onBookShelfChange(book, e.target.value)}>
-        <option value="none" disabled>Move to...</option>
-        <option value="currentlyReading">Currently Reading</option>
-        <option value="wantToRead">Want to Read</option>
-        <option value="read">Read</option>
-        <option value="none">None</option>
-      </select>
+      <SelectField className="book-shelf-changer-select"
+                   value={book.shelf}
+                   onChange={
+                     (event, index, value) => onBookShelfChange(book, value)
+                   }>
+        <MenuItem value="none" primaryText="Move to..." disabled />
+        <MenuItem value="currentlyReading" primaryText="Currently Reading" />
+        <MenuItem value="wantToRead" primaryText="Want to Read" />
+        <MenuItem value="read" primaryText="Read" />
+        <MenuItem value="none" primaryText="None" />
+      </SelectField>
     </div>
   )
 }
