@@ -1,13 +1,18 @@
 import React from 'react'
 import './BookShelfListItem.css'
 import BookList from '../../BookList'
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar'
 
 const BookShelf = ({title, books, onBookShelfChange}) => {
   return (
     <div className="bookshelf">
-      <h2 className="bookshelf-title">{title}</h2>
+      <Toolbar>
+        <ToolbarGroup>
+          <ToolbarTitle text={`${title} (${books.length})`}/>
+        </ToolbarGroup>
+      </Toolbar>
       <div className="bookshelf-books">
-        <BookList books={books} onBookShelfChange={onBookShelfChange} />
+        <BookList books={books} onBookShelfChange={onBookShelfChange}/>
       </div>
     </div>
   )
