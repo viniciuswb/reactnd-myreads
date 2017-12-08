@@ -44,6 +44,9 @@ class BookShelfList extends Component {
               ))
           }
         </div>
+        <div className="open-search">
+          <a>Add a book</a>
+        </div>
       </div>
     )
   }
