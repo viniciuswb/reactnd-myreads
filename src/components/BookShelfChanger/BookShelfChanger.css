@@ -1,14 +1,4 @@
-.book-shelf-changer {
-  position: absolute;
-  right: 0;
-  bottom: -10px;
-}
-.book-shelf-changer-icon {
-  background-image: url('../../icons/arrow-down.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-}
 .book-shelf-changer-select {
   width: 100% !important;
-  opacity: 0 !important;
+  opacity: 1 !important;
 }
