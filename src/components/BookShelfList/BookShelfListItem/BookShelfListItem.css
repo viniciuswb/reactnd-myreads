@@ -1,14 +1,23 @@
 .bookshelf {
   padding: 0 0 10px;
 }
-@media (min-width: 600px) {
-  .bookshelf {
-    padding: 20px 20px;
-  }
-}
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
 }
 .bookshelf-books {
   text-align: center;
+}
+.loader {
+  text-align: center;
+  margin-top: 20px;
+}
+.refresh {
+  display: inline-block;
+  position: relative;
+}
+
+@media (min-width: 600px) {
+  .bookshelf {
+    padding: 20px 20px;
+  }
 }

@@ -12,12 +12,16 @@ class BookShelfList extends Component {
       {name: 'Want to Read', type: 'wantToRead'},
       {name: 'Read', type: 'read'}
     ],
-    books: []
+    books: [],
+    loading: true
   }
 
   componentDidMount() {
     getAll().then(books => {
-      this.setState({books})
+      this.setState({
+        books,
+        loading: false
+      })
     })
   }
 
@@ -40,6 +44,7 @@ class BookShelfList extends Component {
                 <BookShelfListItem
                   key={index}
                   title={shelf.name}
+                  loading={this.state.loading}
                   books={this.state.books.filter(book => book.shelf === shelf.type)}
                   onBookShelfChange={this.bookShelfChange}
                 />
