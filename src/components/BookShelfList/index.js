@@ -55,7 +55,7 @@ class BookShelfList extends Component {
           <FloatingActionButton
             className="book-shelf-changer"
             backgroundColor="#1e5a9f"
-            onClick={() => this.props.history.push('/search') }
+            onClick={() => this.props.history.push('/search', {books: this.state.books})}
           >
             <AddIcon/>
           </FloatingActionButton>

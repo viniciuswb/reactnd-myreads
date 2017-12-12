@@ -34,6 +34,14 @@ class SearchBooks extends Component {
     })
   }
 
+  bookShelfType = (shearchedBook) => {
+    const bookShelf = this.props.location.state.books
+      .find(shelfBook =>
+        shelfBook.id === shearchedBook.id
+      )
+    return bookShelf ? bookShelf.shelf : 'none'
+  }
+
   render() {
     return (
       <div className="search-books">
@@ -78,6 +86,7 @@ class SearchBooks extends Component {
                   <BookListItem
                     key={index}
                     book={book}
+                    shelf={this.bookShelfType(book)}
                     onBookShelfChange={this.bookShelfChange}
                   />
                 ))}

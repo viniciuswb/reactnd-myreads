@@ -2,10 +2,12 @@ import React from 'react'
 import BookShelfChanger from '../../BookShelfChanger'
 import './BookListItem.css'
 
-const BookListItem = ({book, onBookShelfChange}) => {
-  let image = book.imageLinks.thumbnail ? book.imageLinks.thumbnail : ''
+const BookListItem = ({book, onBookShelfChange, shelf}) => {
+  let image = book.imageLinks ? book.imageLinks.thumbnail : ''
   let authors = book.authors ? book.authors.join(', ') : []
   let title = book.title ? book.title : ''
+  let _shelf = book.shelf ? book.shelf : shelf
+
   return (
     <li className="book-item">
       <div className="book">
@@ -17,7 +19,7 @@ const BookListItem = ({book, onBookShelfChange}) => {
           }} />
           <BookShelfChanger
             book={book}
-            shelf={book.shelf}
+            shelf={_shelf}
             onBookShelfChange={onBookShelfChange}
           />
         </div>
