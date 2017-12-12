@@ -3,6 +3,9 @@ import BookShelfChanger from '../../BookShelfChanger'
 import './BookListItem.css'
 
 const BookListItem = ({book, onBookShelfChange}) => {
+  let image = book.imageLinks.thumbnail ? book.imageLinks.thumbnail : ''
+  let authors = book.authors ? book.authors.join(', ') : []
+  let title = book.title ? book.title : ''
   return (
     <li className="book-item">
       <div className="book">
@@ -10,12 +13,15 @@ const BookListItem = ({book, onBookShelfChange}) => {
           <div className="book-cover" style={{
             width: 128,
             height: 193,
-            backgroundImage: `url(${book.imageLinks.thumbnail})`
+            backgroundImage: `url(${image})`
           }} />
-          <BookShelfChanger book={book} onBookShelfChange={onBookShelfChange}/>
+          <BookShelfChanger
+            book={book}
+            onBookShelfChange={onBookShelfChange}
+          />
         </div>
-        <div className="book-title">{book.title}</div>
-        <div className="book-authors">{book.authors.join(', ')}</div>
+        <div className="book-title">{title}</div>
+        <div className="book-authors">{authors}</div>
       </div>
     </li>
   )

@@ -1,7 +1,7 @@
 import React from 'react'
 import './BookShelfListItem.css'
 import BookList from '../../BookList'
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar'
+import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar'
 
 const BookShelf = ({title, books, onBookShelfChange}) => {
   return (
