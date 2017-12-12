@@ -1,6 +1,6 @@
 import React from 'react'
 import {IconMenu, MenuItem, FloatingActionButton} from 'material-ui'
-import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more'
+import ArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down'
 import './BookShelfChanger.css'
 
 const BookShelfChanger = ({book, onBookShelfChange}) => {
@@ -17,7 +17,7 @@ const BookShelfChanger = ({book, onBookShelfChange}) => {
             mini={true}
             backgroundColor="#1e5a9f"
           >
-            <NavigationExpandMoreIcon/>
+            <ArrowDown/>
           </FloatingActionButton>
         }
         value={book.shelf}
