@@ -17,6 +17,7 @@ const BookListItem = ({book, onBookShelfChange}) => {
           }} />
           <BookShelfChanger
             book={book}
+            shelf={book.shelf}
             onBookShelfChange={onBookShelfChange}
           />
         </div>

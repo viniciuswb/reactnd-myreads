@@ -3,7 +3,7 @@ import {IconMenu, MenuItem, FloatingActionButton} from 'material-ui'
 import ArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down'
 import './BookShelfChanger.css'
 
-const BookShelfChanger = ({book, onBookShelfChange}) => {
+const BookShelfChanger = ({book, onBookShelfChange, shelf}) => {
   return (
     <div className="book-shelf-changer-select">
       <IconMenu
@@ -20,7 +20,7 @@ const BookShelfChanger = ({book, onBookShelfChange}) => {
             <ArrowDown/>
           </FloatingActionButton>
         }
-        value={book.shelf}
+        value={shelf}
         onChange={
           (event, value) => onBookShelfChange(book, value)
         }
