@@ -11,10 +11,6 @@
   text-align: center;
   margin-top: 20px;
 }
-.refresh {
-  display: inline-block;
-  position: relative;
-}
 
 @media (min-width: 600px) {
   .bookshelf {

@@ -13,7 +13,7 @@ const BookShelf = ({title, books, onBookShelfChange, loading}) => {
         </ToolbarGroup>
       </Toolbar>
       {
-        loading ?
+        loading && (
           <div className="loader">
             <RefreshIndicator
               size={80}
@@ -25,7 +25,8 @@ const BookShelf = ({title, books, onBookShelfChange, loading}) => {
                 position: 'relative'
               }}
             />
-          </div> : null
+          </div>
+        )
       }
       <div className="bookshelf-books">
         <BookList books={books} onBookShelfChange={onBookShelfChange}/>
