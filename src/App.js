@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div className="app">
-          <Header/>
+          <Route path="/" component={Header} />
           <Route exact path="/" component={BookShelfList} />
           <Route path="/search" component={SearchBooks} />
         </div>

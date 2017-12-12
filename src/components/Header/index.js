@@ -3,10 +3,14 @@ import {AppBar} from 'material-ui'
 
 import './Header.css'
 
-const Header = () => {
+const Header = ({location}) => {
+  let appName = 'MyReads'
+  if (location.pathname === '/search') {
+    appName = 'MyReads Search'
+  }
   return (
     <AppBar
-      title="MyReads"
+      title={appName}
       className="AppBar"
       showMenuIconButton={false}
     />
