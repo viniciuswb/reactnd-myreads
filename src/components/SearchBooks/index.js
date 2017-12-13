@@ -9,7 +9,9 @@ import {RefreshIndicator} from 'material-ui'
 class SearchBooks extends Component {
   state = {
     books: [],
-    loading: false
+    loading: false,
+    updatedBook: null,
+    bookLoader: false
   }
 
   searchBooks = ({target}) => {
@@ -26,11 +28,19 @@ class SearchBooks extends Component {
   }
 
   bookShelfChange = (book, shelf) => {
+    this.setState({
+      bookLoader: true,
+      updatedBook: book
+    })
     update(book, shelf).then(() => {
       book.shelf = shelf
       let updatedBooks = this.state.books.filter(bk => bk.id !== book.id)
-      updatedBooks.push(book)
-      this.setState({books: updatedBooks})
+      let bookIndex = this.state.books.findIndex(bk => bk.id === book.id)
+      updatedBooks.splice(bookIndex, 0, book)
+      this.setState({
+        books: updatedBooks,
+        bookLoader: false
+      })
     })
   }
 
@@ -86,6 +96,7 @@ class SearchBooks extends Component {
                   <BookListItem
                     key={index}
                     book={book}
+                    bookLoader={this.state.updatedBook === book ? this.state.bookLoader : false}
                     shelf={this.bookShelfType(book)}
                     onBookShelfChange={this.bookShelfChange}
                   />
