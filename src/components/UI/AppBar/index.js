@@ -1,15 +1,15 @@
 import React from 'react'
-import {AppBar} from 'material-ui'
+import Bar from 'material-ui/AppBar'
 
-import './Header.css'
+import './AppBar.css'
 
-const Header = ({location}) => {
+const AppBar = ({location}) => {
   let appName = 'MyReads'
   if (location.pathname === '/search') {
     appName = 'MyReads Search'
   }
   return (
-    <AppBar
+    <Bar
       title={appName}
       className="AppBar"
       showMenuIconButton={false}
@@ -17,4 +17,4 @@ const Header = ({location}) => {
   )
 }
 
-export default Header
+export default AppBar
