@@ -1,61 +1,13 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import {search, update} from "../../utils/BooksAPI"
 import './SearchBooks.css'
 import BookListItem from "../BookList/BookListItem"
 import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar'
 import {RefreshIndicator} from 'material-ui'
 
 class SearchBooks extends Component {
-  state = {
-    books: [],
-    loading: false,
-    updatedBook: null,
-    bookLoader: false,
-    shelfBooks: this.props.location.state.books
-  }
-
-  searchBooks = ({target}) => {
-    this.setState({
-      loading: true
-    })
-    let searchText = target.value || ' '
-    search(searchText).then(books => {
-      this.setState({
-        books: books.error ? [] : books,
-        loading: false
-      })
-    })
-  }
-
-  bookShelfChange = (book, shelf) => {
-    this.setState({
-      bookLoader: true,
-      updatedBook: book
-    })
-    update(book, shelf).then(() => {
-      book.shelf = shelf
-      let updatedBooks = this.state.books.filter(bk => bk.id !== book.id)
-      let bookIndex = this.state.books.findIndex(bk => bk.id === book.id)
-      updatedBooks.splice(bookIndex, 0, book)
-
-      let shelfBooksUpdated = this.state.shelfBooks.filter(bk => bk.id !== book.id)
-      shelfBooksUpdated.push(book)
-
-      this.setState({
-        books: updatedBooks,
-        bookLoader: false,
-        shelfBooks: shelfBooksUpdated
-      })
-    })
-  }
-
-  bookShelfType = (shearchedBook) => {
-    const bookShelf = this.state.shelfBooks
-      .find(shelfBook =>
-        shelfBook.id === shearchedBook.id
-      )
-    return bookShelf ? bookShelf.shelf : 'none'
+  componentWillUnmount() {
+    this.props.getSearchedBooks([])
   }
 
   render() {
@@ -67,19 +19,19 @@ class SearchBooks extends Component {
             <input
               type="text"
               placeholder="Search by title or author"
-              onChange={this.searchBooks}
+              onChange={this.props.searchBooks}
             />
           </div>
         </div>
         <div className="search-books-results">
           <Toolbar>
             <ToolbarGroup>
-              <ToolbarTitle text={`Search Results (${this.state.books.length})`}/>
+              <ToolbarTitle text={`Search Results (${this.props.searchedBooks.length})`}/>
             </ToolbarGroup>
           </Toolbar>
 
           {
-            this.state.loading && (
+            this.props.loading && (
               <div className="loader">
                 <RefreshIndicator
                   size={80}
@@ -96,15 +48,15 @@ class SearchBooks extends Component {
           }
 
           {
-            this.state.books.length > 0 && !this.state.loading && (
+            this.props.searchedBooks.length > 0 && !this.props.loading && (
               <ol className="books-grid">
-                {this.state.books.map((book, index) => (
+                {this.props.searchedBooks.map((book, index) => (
                   <BookListItem
                     key={index}
                     book={book}
-                    bookLoader={this.state.updatedBook === book ? this.state.bookLoader : false}
-                    shelf={this.bookShelfType(book)}
-                    onBookShelfChange={this.bookShelfChange}
+                    bookLoader={this.props.updatedBook === book ? this.props.bookLoader : false}
+                    shelf={this.props.bookShelfType(book)}
+                    onBookShelfChange={this.props.bookShelfChange}
                   />
                 ))}
               </ol>
@@ -112,13 +64,12 @@ class SearchBooks extends Component {
           }
 
           {
-            this.state.books.length < 1 && !this.state.loading && (
+            this.props.searchedBooks.length < 1 && !this.props.loading && (
               <div className="no-books">
                 <p>No books available</p>
               </div>
             )
           }
-
         </div>
       </div>
     )
