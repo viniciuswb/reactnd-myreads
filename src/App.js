@@ -17,7 +17,7 @@ class App extends Component {
     books: [],
     searchedBooks: [],
     updatedBook: null,
-    loading: false,
+    loading: true,
     bookLoader: false
   }
 
@@ -89,6 +89,8 @@ class App extends Component {
               shelfs={this.state.shelfs}
               books={this.state.books}
               loading={this.state.loading}
+              updatedBook={this.state.updatedBook}
+              bookLoader={this.state.bookLoader}
               changeLoading={this.changeLoading}
               getBooks={this.getBooks}
               bookShelfChange={this.bookShelfChange}

@@ -4,7 +4,7 @@ import BookList from '../../BookList'
 import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar'
 import {RefreshIndicator} from 'material-ui'
 
-const BookShelf = ({title, books, onBookShelfChange, loading}) => {
+const BookShelf = ({title, books, onBookShelfChange, loading, updatedBook, bookLoader}) => {
   return (
     <div className="bookshelf">
       <Toolbar>
@@ -29,7 +29,12 @@ const BookShelf = ({title, books, onBookShelfChange, loading}) => {
         )
       }
       <div className="bookshelf-books">
-        <BookList books={books} onBookShelfChange={onBookShelfChange}/>
+        <BookList
+          books={books}
+          onBookShelfChange={onBookShelfChange}
+          updatedBook={updatedBook}
+          bookLoader={bookLoader}
+        />
       </div>
     </div>
   )

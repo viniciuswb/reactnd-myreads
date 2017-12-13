@@ -4,7 +4,7 @@ import AddIcon from 'material-ui/svg-icons/content/add'
 import BookShelfListItem from './BookShelfListItem'
 import './BookShelfList.css'
 
-const BookShelfList = ({shelfs, loading, books, bookShelfChange, history}) => (
+const BookShelfList = ({shelfs, loading, books, bookShelfChange, history, bookLoader, updatedBook}) => (
   <div className="list-books">
     <div className="list-books-content">
       {
@@ -16,6 +16,8 @@ const BookShelfList = ({shelfs, loading, books, bookShelfChange, history}) => (
               loading={loading}
               books={books.filter(book => book.shelf === shelf.type)}
               onBookShelfChange={bookShelfChange}
+              updatedBook={updatedBook}
+              bookLoader={bookLoader}
             />
           ))
       }
