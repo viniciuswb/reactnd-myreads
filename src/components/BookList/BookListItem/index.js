@@ -2,6 +2,7 @@ import React from 'react'
 import BookShelfChanger from '../../BookShelfChanger'
 import './BookListItem.css'
 import Loader from "../../UI/Loader"
+import If from "../../../hoc/If"
 
 const BookListItem = ({book, onBookShelfChange, shelf, bookLoader, shelfs}) => {
   let image = book.imageLinks ? book.imageLinks.thumbnail : ''
@@ -19,7 +20,9 @@ const BookListItem = ({book, onBookShelfChange, shelf, bookLoader, shelfs}) => {
             height: 193,
             backgroundImage: `url(${image})`
           }}>
-            { loader && (<Loader loaderClass="loader-cover" size={60} top={66} left={0} />) }
+            <If test={loader}>
+              <Loader loaderClass="loader-cover" size={60} top={66} left={0} />
+            </If>
           </div>
           <BookShelfChanger
             book={book}
