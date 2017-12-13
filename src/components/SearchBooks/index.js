@@ -11,7 +11,8 @@ class SearchBooks extends Component {
     books: [],
     loading: false,
     updatedBook: null,
-    bookLoader: false
+    bookLoader: false,
+    shelfBooks: this.props.location.state.books
   }
 
   searchBooks = ({target}) => {
@@ -37,15 +38,20 @@ class SearchBooks extends Component {
       let updatedBooks = this.state.books.filter(bk => bk.id !== book.id)
       let bookIndex = this.state.books.findIndex(bk => bk.id === book.id)
       updatedBooks.splice(bookIndex, 0, book)
+
+      let shelfBooksUpdated = this.state.shelfBooks.filter(bk => bk.id !== book.id)
+      shelfBooksUpdated.push(book)
+
       this.setState({
         books: updatedBooks,
-        bookLoader: false
+        bookLoader: false,
+        shelfBooks: shelfBooksUpdated
       })
     })
   }
 
   bookShelfType = (shearchedBook) => {
-    const bookShelf = this.props.location.state.books
+    const bookShelf = this.state.shelfBooks
       .find(shelfBook =>
         shelfBook.id === shearchedBook.id
       )
