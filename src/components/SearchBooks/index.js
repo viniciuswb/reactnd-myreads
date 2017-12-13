@@ -2,8 +2,9 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import './SearchBooks.css'
 import BookListItem from "../BookList/BookListItem"
-import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar'
+
 import Loader from "../UI/Loader"
+import Toolbar from "../UI/Toolbar"
 
 class SearchBooks extends Component {
   componentWillUnmount() {
@@ -24,11 +25,8 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <Toolbar>
-            <ToolbarGroup>
-              <ToolbarTitle text={`Search Results (${this.props.searchedBooks.length})`}/>
-            </ToolbarGroup>
-          </Toolbar>
+
+          <Toolbar text={`Search Results (${this.props.searchedBooks.length})`} />
 
           { this.props.loading && (<Loader loaderClass="loader" size={80} top={0} left={10} />) }
 

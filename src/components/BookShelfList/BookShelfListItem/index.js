@@ -1,17 +1,13 @@
 import React from 'react'
 import './BookShelfListItem.css'
 import BookList from '../../BookList'
-import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar'
 import Loader from "../../UI/Loader"
+import Toolbar from "../../UI/Toolbar"
 
 const BookShelf = ({title, books, onBookShelfChange, loading, updatedBook, bookLoader}) => {
   return (
     <div className="bookshelf">
-      <Toolbar>
-        <ToolbarGroup>
-          <ToolbarTitle text={`${title} (${books.length})`}/>
-        </ToolbarGroup>
-      </Toolbar>
+      <Toolbar text={`${title} (${books.length})`} />
       { loading && (<Loader loaderClass="loader" size={80} top={0} left={10} />) }
       <div className="bookshelf-books">
         <BookList
