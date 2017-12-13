@@ -4,7 +4,7 @@ import BookList from '../../BookList'
 import Loader from "../../UI/Loader"
 import Toolbar from "../../UI/Toolbar"
 
-const BookShelf = ({title, books, onBookShelfChange, loading, updatedBook, bookLoader}) => {
+const BookShelf = ({title, books, onBookShelfChange, loading, updatedBook, bookLoader, shelfs}) => {
   return (
     <div className="bookshelf">
       <Toolbar text={`${title} (${books.length})`} />
@@ -15,6 +15,7 @@ const BookShelf = ({title, books, onBookShelfChange, loading, updatedBook, bookL
           onBookShelfChange={onBookShelfChange}
           updatedBook={updatedBook}
           bookLoader={bookLoader}
+          shelfs={shelfs}
         />
       </div>
     </div>

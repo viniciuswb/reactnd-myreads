@@ -99,6 +99,7 @@ class App extends Component {
           <Route path="/search" render={props =>
             <SearchBooks
               {...props}
+              shelfs={this.state.shelfs}
               searchedBooks={this.state.searchedBooks}
               loading={this.state.loading}
               books={this.state.books}

@@ -3,7 +3,7 @@ import BookShelfChanger from '../../BookShelfChanger'
 import './BookListItem.css'
 import Loader from "../../UI/Loader"
 
-const BookListItem = ({book, onBookShelfChange, shelf, bookLoader}) => {
+const BookListItem = ({book, onBookShelfChange, shelf, bookLoader, shelfs}) => {
   let image = book.imageLinks ? book.imageLinks.thumbnail : ''
   let authors = book.authors ? book.authors.join(', ') : []
   let title = book.title ? book.title : ''
@@ -25,6 +25,7 @@ const BookListItem = ({book, onBookShelfChange, shelf, bookLoader}) => {
             book={book}
             shelf={_shelf}
             onBookShelfChange={onBookShelfChange}
+            shelfs={shelfs}
           />
         </div>
         <div className="book-title">{title}</div>

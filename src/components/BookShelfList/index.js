@@ -11,6 +11,7 @@ const BookShelfList = ({shelfs, loading, books, bookShelfChange, history, bookLo
         shelfs.map(
           (shelf, index) => (
             <BookShelfListItem
+              shelfs={shelfs}
               key={index}
               title={shelf.name}
               loading={loading}
