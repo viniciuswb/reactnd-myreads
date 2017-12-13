@@ -1,30 +1,14 @@
 import React from 'react'
-import {IconMenu, MenuItem, FloatingActionButton} from 'material-ui'
-import ArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down'
+import {MenuItem} from 'material-ui'
 import './BookShelfChanger.css'
+import IconMenu from "../UI/IconMenu"
 
 const BookShelfChanger = ({book, onBookShelfChange, shelf, shelfs}) => {
   return (
     <div className="book-shelf-changer-select">
       <IconMenu
-        style={{
-          position: 'absolute',
-          right: 0,
-          bottom: '-10px'
-        }}
-        iconButtonElement={
-          <FloatingActionButton
-            mini={true}
-            backgroundColor="#1e5a9f"
-          >
-            <ArrowDown/>
-          </FloatingActionButton>
-        }
         value={shelf}
-        onChange={
-          (event, value) => onBookShelfChange(book, value)
-        }
-        selectedMenuItemStyle={{color: '#1e5a9f'}}
+        change={(event, value) => onBookShelfChange(book, value)}
       >
         <MenuItem value="none" primaryText="Move to..." disabled/>
         { shelfs.map(shelf => <MenuItem value={shelf.type} primaryText={shelf.name} />) }
