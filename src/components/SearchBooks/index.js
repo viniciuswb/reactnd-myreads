@@ -5,6 +5,7 @@ import BookListItem from "../BookList/BookListItem"
 import Loader from "../UI/Loader"
 import Toolbar from "../UI/Toolbar"
 import SearchBar from "../UI/SearchBar"
+import NoBooks from "../UI/NoBooks"
 
 class SearchBooks extends Component {
   componentWillUnmount() {
@@ -22,8 +23,7 @@ class SearchBooks extends Component {
         <div className="search-books-results">
           <Toolbar text={`Search Results (${this.props.searchedBooks.length})`} />
           { this.props.loading && (<Loader loaderClass="loader" size={80} top={0} left={10} />) }
-          {
-            this.props.searchedBooks.length > 0 && !this.props.loading && (
+          { this.props.searchedBooks.length > 0 && !this.props.loading && (
               <ol className="books-grid">
                 {this.props.searchedBooks.map((book, index) => (
                   <BookListItem
@@ -36,15 +36,10 @@ class SearchBooks extends Component {
                   />
                 ))}
               </ol>
-            )
-          }
-          {
-            this.props.searchedBooks.length < 1 && !this.props.loading && (
-              <div className="no-books">
-                <p>No books available</p>
-              </div>
-            )
-          }
+            )}
+          {this.props.searchedBooks.length < 1 && !this.props.loading && (
+              <NoBooks />
+            )}
         </div>
       </div>
     )
