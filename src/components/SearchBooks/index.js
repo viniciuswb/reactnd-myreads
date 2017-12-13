@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import './SearchBooks.css'
 import BookListItem from "../BookList/BookListItem"
 import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar'
-import {RefreshIndicator} from 'material-ui'
+import Loader from "../UI/Loader"
 
 class SearchBooks extends Component {
   componentWillUnmount() {
@@ -30,22 +30,7 @@ class SearchBooks extends Component {
             </ToolbarGroup>
           </Toolbar>
 
-          {
-            this.props.loading && (
-              <div className="loader">
-                <RefreshIndicator
-                  size={80}
-                  left={10}
-                  top={0}
-                  status="loading"
-                  style={{
-                    display: 'inline-block',
-                    position: 'relative'
-                  }}
-                />
-              </div>
-            )
-          }
+          { this.props.loading && (<Loader loaderClass="loader" size={80} top={0} left={10} />) }
 
           {
             this.props.searchedBooks.length > 0 && !this.props.loading && (

@@ -1,7 +1,7 @@
 import React from 'react'
 import BookShelfChanger from '../../BookShelfChanger'
 import './BookListItem.css'
-import {RefreshIndicator} from 'material-ui'
+import Loader from "../../UI/Loader"
 
 const BookListItem = ({book, onBookShelfChange, shelf, bookLoader}) => {
   let image = book.imageLinks ? book.imageLinks.thumbnail : ''
@@ -19,22 +19,7 @@ const BookListItem = ({book, onBookShelfChange, shelf, bookLoader}) => {
             height: 193,
             backgroundImage: `url(${image})`
           }}>
-            {
-              loader && (
-                <div className="loader-cover">
-                  <RefreshIndicator
-                    size={60}
-                    left={0}
-                    top={66}
-                    status="loading"
-                    style={{
-                      display: 'inline-block',
-                      position: 'relative'
-                    }}
-                  />
-                </div>
-              )
-            }
+            { loader && (<Loader loaderClass="loader-cover" size={60} top={66} left={0} />) }
           </div>
           <BookShelfChanger
             book={book}

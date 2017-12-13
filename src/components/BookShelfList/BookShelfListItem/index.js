@@ -2,7 +2,7 @@ import React from 'react'
 import './BookShelfListItem.css'
 import BookList from '../../BookList'
 import {Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui/Toolbar'
-import {RefreshIndicator} from 'material-ui'
+import Loader from "../../UI/Loader"
 
 const BookShelf = ({title, books, onBookShelfChange, loading, updatedBook, bookLoader}) => {
   return (
@@ -12,22 +12,7 @@ const BookShelf = ({title, books, onBookShelfChange, loading, updatedBook, bookL
           <ToolbarTitle text={`${title} (${books.length})`}/>
         </ToolbarGroup>
       </Toolbar>
-      {
-        loading && (
-          <div className="loader">
-            <RefreshIndicator
-              size={80}
-              left={10}
-              top={0}
-              status="loading"
-              style={{
-                display: 'inline-block',
-                position: 'relative'
-              }}
-            />
-          </div>
-        )
-      }
+      { loading && (<Loader loaderClass="loader" size={80} top={0} left={10} />) }
       <div className="bookshelf-books">
         <BookList
           books={books}
