@@ -6,6 +6,7 @@ import BookShelfList from './components/BookShelfList'
 import SearchBooks from './components/SearchBooks'
 import './App.css'
 import {getAll, search, update} from "./utils/BooksAPI"
+import BookDetails from "./components/BookDetails"
 
 class App extends Component {
   state = {
@@ -18,7 +19,8 @@ class App extends Component {
     searchedBooks: [],
     updatedBook: null,
     loading: true,
-    bookLoader: false
+    bookLoader: false,
+    modalOpen: false
   }
 
   componentDidMount() {
@@ -78,10 +80,23 @@ class App extends Component {
     })
   }
 
+  handleModalToggle = () => {
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    })
+  }
+
   render() {
+
+
     return (
       <MuiThemeProvider>
         <div className="app">
+          <BookDetails
+            modalToggle={this.handleModalToggle}
+            modalOpen={this.state.modalOpen}
+          />
+
           <Route path="/" component={AppBar} />
           <Route exact path="/" render={props =>
             <BookShelfList
@@ -94,6 +109,7 @@ class App extends Component {
               changeLoading={this.changeLoading}
               getBooks={this.getBooks}
               bookShelfChange={this.bookShelfChange}
+              modalToggle={this.handleModalToggle}
             />
           }/>
           <Route path="/search" render={props =>

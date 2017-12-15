@@ -10,9 +10,9 @@ const BookShelfChanger = ({book, onBookShelfChange, shelf, shelfs}) => {
         value={shelf}
         change={(event, value) => onBookShelfChange(book, value)}
       >
-        <MenuItem value="none" primaryText="Move to..." disabled/>
-        { shelfs.map(shelf => <MenuItem value={shelf.type} primaryText={shelf.name} />) }
-        <MenuItem value="none" primaryText="None"/>
+        <MenuItem key="none" value="none" primaryText="Move to..." disabled/>
+        { shelfs.map(shelf => <MenuItem key={shelf.type} value={shelf.type} primaryText={shelf.name} />) }
+        <MenuItem key="none2" value="none" primaryText="None"/>
       </IconMenu>
     </div>
   )

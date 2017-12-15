@@ -5,7 +5,7 @@ import Loader from "../../UI/Loader"
 import Toolbar from "../../UI/Toolbar"
 import If from "../../../hoc/If"
 
-const BookShelf = ({title, books, onBookShelfChange, loading, updatedBook, bookLoader, shelfs}) => {
+const BookShelf = ({title, books, onBookShelfChange, loading, updatedBook, bookLoader, shelfs, modalToggle}) => {
   return (
     <div className="bookshelf">
       <Toolbar text={`${title} (${books.length})`} />
@@ -20,6 +20,7 @@ const BookShelf = ({title, books, onBookShelfChange, loading, updatedBook, bookL
           updatedBook={updatedBook}
           bookLoader={bookLoader}
           shelfs={shelfs}
+          modalToggle={modalToggle}
         />
       </div>
     </div>
