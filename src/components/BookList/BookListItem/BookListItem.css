@@ -26,7 +26,9 @@
 .book-cover {
   position: absolute;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  background: #eee;
+  background: rgba(30, 90, 159, 1);;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .book-cover-title {

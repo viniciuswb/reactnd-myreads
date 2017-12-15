@@ -23,7 +23,14 @@ const Modal = ({modalClose, modalOpen, book}) => {
       <div>
         <h3>{book.title}</h3>
         <h4>{book.subtitle}</h4>
-        <img className="book-detail-cover" src={book.imageLinks.thumbnail} alt="Book cover"/>
+        <div className="book-cover" style={{
+          width: 128,
+          height: 193,
+          margin: '0 auto',
+          position: 'relative',
+          backgroundImage: `url(${book.imageLinks.thumbnail})`
+        }} />
+        {/*<img className="book-detail-cover" src={book.imageLinks.thumbnail} alt="Book cover"/>*/}
         <div className="book-ratings">
           <ReactStars
             count={5}
