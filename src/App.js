@@ -5,8 +5,9 @@ import AppBar from './components/UI/AppBar'
 import BookShelfList from './components/BookShelfList'
 import SearchBooks from './components/SearchBooks'
 import './App.css'
-import {getAll, search, update} from "./utils/BooksAPI"
+import {getAll, search, update, get} from "./utils/BooksAPI"
 import BookDetails from "./components/BookDetails"
+import If from "./hoc/If"
 
 class App extends Component {
   state = {
@@ -20,7 +21,8 @@ class App extends Component {
     updatedBook: null,
     loading: true,
     bookLoader: false,
-    modalOpen: false
+    modalOpen: false,
+    book: null
   }
 
   componentDidMount() {
@@ -31,19 +33,19 @@ class App extends Component {
   }
 
   changeLoading = (status) => {
-    this.setState({ loading: status })
+    this.setState({loading: status})
   }
 
   changeBookLoader = (status) => {
-    this.setState({ bookLoader: status })
+    this.setState({bookLoader: status})
   }
 
   getBooks = (books) => {
-    this.setState({ books })
+    this.setState({books})
   }
 
   getSearchedBooks = (searchedBooks) => {
-    this.setState({ searchedBooks })
+    this.setState({searchedBooks})
   }
 
   setUpdatedBook = (updatedBook) => {
@@ -80,24 +82,34 @@ class App extends Component {
     })
   }
 
-  handleModalToggle = () => {
+  handleModalOpen = (bookId) => {
+    get(bookId).then(book => {
+      this.setState({
+        book,
+        modalOpen: true
+      })
+    })
+  }
+
+  handleModalClose = () => {
     this.setState({
-      modalOpen: !this.state.modalOpen
+      modalOpen: false
     })
   }
 
   render() {
-
-
     return (
       <MuiThemeProvider>
         <div className="app">
-          <BookDetails
-            modalToggle={this.handleModalToggle}
-            modalOpen={this.state.modalOpen}
-          />
+          <If test={this.state.modalOpen}>
+            <BookDetails
+              modalClose={this.handleModalClose}
+              modalOpen={this.state.modalOpen}
+              book={this.state.book}
+            />
+          </If>
 
-          <Route path="/" component={AppBar} />
+          <Route path="/" component={AppBar}/>
           <Route exact path="/" render={props =>
             <BookShelfList
               {...props}
@@ -109,7 +121,7 @@ class App extends Component {
               changeLoading={this.changeLoading}
               getBooks={this.getBooks}
               bookShelfChange={this.bookShelfChange}
-              modalToggle={this.handleModalToggle}
+              modalToggle={this.handleModalOpen}
             />
           }/>
           <Route path="/search" render={props =>

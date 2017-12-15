@@ -29,7 +29,7 @@ const BookListItem = ({book, onBookShelfChange, shelf, bookLoader, shelfs, modal
                 <FlatButton
                   icon={<InfoIcon/>}
                   label="Detalhes"
-                  click={modalToggle}
+                  click={() => modalToggle(book.id)}
                 />
               </div>
               <If test={loader}>
