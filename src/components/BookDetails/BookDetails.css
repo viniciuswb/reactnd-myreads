@@ -2,6 +2,28 @@
   text-align: center;
 }
 
+.book-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 40px;
+  justify-content: center;
+  align-content: center;
+}
+
+.book-details-grid-item {
+  max-width: 150px;
+}
+
+.book-detaill-item {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.book-detaill-item span{
+  font-size: 12px;
+  color: #bbb;
+}
+
 .book-detail-cover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: rgba(30, 90, 159, 1);;
