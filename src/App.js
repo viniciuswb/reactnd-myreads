@@ -8,6 +8,7 @@ import './App.css'
 import {getAll, search, update, get} from "./utils/BooksAPI"
 import BookDetails from "./components/BookDetails"
 import If from "./hoc/If"
+import Backdrop from "./components/UI/BackDrop"
 
 class App extends Component {
   state = {
@@ -21,6 +22,7 @@ class App extends Component {
     updatedBook: null,
     loading: true,
     bookLoader: false,
+    detailsLoader: false,
     modalOpen: false,
     book: null
   }
@@ -83,10 +85,12 @@ class App extends Component {
   }
 
   handleModalOpen = (bookId) => {
+    this.setState({detailsLoader: true})
     get(bookId).then(book => {
       this.setState({
         book,
-        modalOpen: true
+        modalOpen: true,
+        detailsLoader: false
       })
     })
   }
@@ -101,6 +105,7 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div className="app">
+          <Backdrop show={this.state.detailsLoader} />
           <If test={this.state.modalOpen}>
             <BookDetails
               modalClose={this.handleModalClose}
