@@ -38,6 +38,7 @@ class SearchBooks extends Component {
                   bookLoader={this.props.updatedBook === book ? this.props.bookLoader : false}
                   shelf={this.props.bookShelfType(book)}
                   onBookShelfChange={this.props.bookShelfChange}
+                  modalToggle={this.props.modalToggle}
                 />
               ))}
             </ol>

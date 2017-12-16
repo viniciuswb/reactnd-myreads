@@ -13,6 +13,17 @@ const Modal = ({modalClose, modalOpen, book}) => {
     />
   ]
 
+  let image = book.imageLinks ? book.imageLinks.thumbnail : ''
+  let authors = book.authors ? book.authors.join(', ') : []
+  let categories = book.categories ? book.categories.join(', ') : []
+  let title = book.title ? book.title : ''
+  let subtitle = book.subtitle ? book.subtitle : ''
+  let averageRating = book.averageRating ? book.averageRating : 0
+  let ratingsCount = book.ratingsCount ? book.ratingsCount : 0
+  let publisher = book.publisher ? book.publisher : null
+  let publishedDate = book.publishedDate ? book.publishedDate : null
+  let pageCount = book.pageCount ? book.pageCount : null
+
   return (
     <Dialog
       className="book-details"
@@ -22,8 +33,8 @@ const Modal = ({modalClose, modalOpen, book}) => {
       autoScrollBodyContent={true}
     >
       <div>
-        <h3>{book.title}</h3>
-        <h4>{book.subtitle}</h4>
+        <h3>{title}</h3>
+        <h4>{subtitle}</h4>
         <div className="book-details-grid">
           <div className="book-details-grid-item">
             <div className="book-cover" style={{
@@ -31,50 +42,50 @@ const Modal = ({modalClose, modalOpen, book}) => {
               height: 193,
               margin: '0 auto',
               position: 'relative',
-              backgroundImage: `url(${book.imageLinks.thumbnail})`
+              backgroundImage: `url(${image})`
             }}/>
             <div className="book-ratings">
               <ReactStars
                 count={5}
-                value={book.averageRating}
+                value={averageRating}
                 size={18}
                 edit={false}
                 color2={'#ffd700'}
                 className="book-ratings-stars"
               />
-              <p className="book-ratings-count">({book.ratingsCount ? book.ratingsCount : 0})</p>
+              <p className="book-ratings-count">({ratingsCount})</p>
             </div>
           </div>
           <div className="book-details-grid-item">
             <div className="book-detaill-item">
-              <If test={book.authors.length === 1}>
-                <span>Author:</span> <br/> {book.authors}
+              <If test={authors.length === 1}>
+                <span>Author:</span> <br/> {authors}
               </If>
-              <If test={book.authors.length > 1}>
-                <span>Authors:</span> <br/> {book.authors.join(', ')}
-              </If>
-            </div>
-            <div className="book-detaill-item">
-              <If test={book.publisher}>
-                <span>Publisher:</span> <br/> {book.publisher}
+              <If test={authors.length > 1}>
+                <span>Authors:</span> <br/> {authors}
               </If>
             </div>
             <div className="book-detaill-item">
-              <If test={book.publishedDate}>
-                <span>Published Date:</span> <br/> {book.publishedDate}
+              <If test={publisher}>
+                <span>Publisher:</span> <br/> {publisher}
               </If>
             </div>
             <div className="book-detaill-item">
-              <If test={book.pageCount}>
-                <span>Pages:</span> <br/> {book.pageCount}
+              <If test={publishedDate}>
+                <span>Published Date:</span> <br/> {publishedDate}
               </If>
             </div>
             <div className="book-detaill-item">
-              <If test={book.categories.length === 1}>
-                <span>Category:</span> <br/> {book.categories}
+              <If test={pageCount}>
+                <span>Pages:</span> <br/> {pageCount}
               </If>
-              <If test={book.categories.length > 1}>
-                <span>Categories:</span> <br/> {book.categories.join(', ')}
+            </div>
+            <div className="book-detaill-item">
+              <If test={categories.length === 1}>
+                <span>Category:</span> <br/> {categories}
+              </If>
+              <If test={categories.length > 1}>
+                <span>Categories:</span> <br/> {categories}
               </If>
             </div>
           </div>

@@ -140,6 +140,7 @@ class App extends Component {
               bookShelfChange={this.bookShelfChange}
               bookShelfType={this.bookShelfType}
               searchBooks={this.searchBooks}
+              modalToggle={this.handleModalOpen}
             />
           }/>
         </div>
