@@ -1,9 +1,13 @@
 import React from 'react'
-import './BookShelfListItem.css'
+
 import BookList from '../../BookList'
 import Loader from "../../UI/Loader"
 import Toolbar from "../../UI/Toolbar"
+
 import If from "../../../hoc/If"
+
+import './BookShelfListItem.css'
+
 
 const BookShelf = ({title, books, onBookShelfChange, loading, updatedBook, bookLoader, shelfs, modalToggle}) => {
   return (

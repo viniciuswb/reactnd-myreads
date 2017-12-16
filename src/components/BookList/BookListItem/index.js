@@ -1,12 +1,15 @@
 import React from 'react'
+
 import BookShelfChanger from '../../BookShelfChanger'
-import './BookListItem.css'
-import 'hover.css/css/hover-min.css'
 import Loader from "../../UI/Loader"
-import If from "../../../hoc/If"
-import InfoIcon from 'material-ui/svg-icons/action/info'
 import FlatButton from "../../UI/FlatButton"
+
+import If from "../../../hoc/If"
 import Aux from "../../../hoc/Aux"
+
+import InfoIcon from 'material-ui/svg-icons/action/info'
+import 'hover.css/css/hover-min.css'
+import './BookListItem.css'
 
 const BookListItem = ({book, onBookShelfChange, shelf, bookLoader, shelfs, modalToggle}) => {
   let image = book.imageLinks ? book.imageLinks.thumbnail : ''

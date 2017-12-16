@@ -1,7 +1,9 @@
 import React from 'react'
+
+import BookShelfListItem from './BookShelfListItem'
+
 import {FloatingActionButton} from 'material-ui'
 import AddIcon from 'material-ui/svg-icons/content/add'
-import BookShelfListItem from './BookShelfListItem'
 import './BookShelfList.css'
 
 const BookShelfList = ({shelfs, loading, books, bookShelfChange, history, bookLoader, updatedBook, modalToggle}) => {

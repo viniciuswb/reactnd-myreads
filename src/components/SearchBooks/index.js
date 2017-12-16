@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
-import './SearchBooks.css'
-import BookListItem from "../BookList/BookListItem"
 
+import BookListItem from "../BookList/BookListItem"
 import Loader from "../UI/Loader"
 import Toolbar from "../UI/Toolbar"
 import SearchBar from "../UI/SearchBar"
 import NoBooks from "../UI/NoBooks"
+
 import If from "../../hoc/If"
+
+import './SearchBooks.css'
 
 class SearchBooks extends Component {
   componentWillUnmount() {

@@ -1,7 +1,10 @@
 import React from 'react'
+
+import IconMenu from "../UI/IconMenu"
+
 import {MenuItem} from 'material-ui'
 import './BookShelfChanger.css'
-import IconMenu from "../UI/IconMenu"
+
 
 const BookShelfChanger = ({book, onBookShelfChange, shelf, shelfs}) => {
   return (

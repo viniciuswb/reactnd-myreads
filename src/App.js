@@ -1,14 +1,17 @@
 import React, {Component} from 'react'
 import {Route} from 'react-router-dom'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import AppBar from './components/UI/AppBar'
+
 import BookShelfList from './components/BookShelfList'
 import SearchBooks from './components/SearchBooks'
-import './App.css'
-import {getAll, search, update, get} from "./utils/BooksAPI"
 import BookDetails from "./components/BookDetails"
-import If from "./hoc/If"
+import AppBar from './components/UI/AppBar'
 import Backdrop from "./components/UI/BackDrop"
+
+import {getAll, search, update, get} from "./utils/BooksAPI"
+import If from "./hoc/If"
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import './App.css'
 
 class App extends Component {
   state = {
@@ -18,13 +21,13 @@ class App extends Component {
       {name: 'Read', type: 'read'}
     ],
     books: [],
+    book: null,
     searchedBooks: [],
     updatedBook: null,
     loading: true,
     bookLoader: false,
     detailsLoader: false,
-    modalOpen: false,
-    book: null
+    modalOpen: false
   }
 
   componentDidMount() {
@@ -114,7 +117,7 @@ class App extends Component {
             />
           </If>
 
-          <Route path="/" component={AppBar}/>
+          <Route path="/" component={AppBar} />
           <Route exact path="/" render={props =>
             <BookShelfList
               {...props}

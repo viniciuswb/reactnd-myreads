@@ -1,5 +1,7 @@
 import React from 'react'
+
 import BookListItem from './BookListItem'
+
 import './BookList.css'
 
 const BooksListItem = ({books, onBookShelfChange, updatedBook, bookLoader, shelfs, modalToggle}) => {

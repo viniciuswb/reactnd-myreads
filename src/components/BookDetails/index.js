@@ -1,8 +1,10 @@
 import React from 'react'
+
+import If from "../../hoc/If"
+
 import {Dialog, FlatButton} from 'material-ui'
 import ReactStars from 'react-stars'
 import './BookDetails.css'
-import If from "../../hoc/If"
 
 const Modal = ({modalClose, modalOpen, book}) => {
   const actions = [
