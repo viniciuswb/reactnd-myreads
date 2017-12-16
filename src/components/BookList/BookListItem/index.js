@@ -25,13 +25,15 @@ const BookListItem = ({book, onBookShelfChange, shelf, bookLoader, shelfs, modal
               height: 193,
               backgroundImage: `url(${image})`
             }}>
-              <div className="book-hover hvr-shutter-in-vertical">
-                <FlatButton
-                  icon={<InfoIcon/>}
-                  label="Detalhes"
-                  click={() => modalToggle(book.id)}
-                />
-              </div>
+              <If test={!loader}>
+                <div className="book-hover hvr-shutter-in-vertical">
+                  <FlatButton
+                    icon={<InfoIcon/>}
+                    label="Detalhes"
+                    click={() => modalToggle(book.id)}
+                  />
+                </div>
+              </If>
               <If test={loader}>
                 <Loader loaderClass="loader-cover" size={60} top={66} left={0}/>
               </If>
