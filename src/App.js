@@ -7,7 +7,7 @@ import BookDetails from "./components/BookDetails"
 import AppBar from './components/UI/AppBar'
 import Backdrop from "./components/UI/BackDrop"
 
-import {getAll, search, update, get} from "./utils/BooksAPI"
+import {get, getAll, update, search} from "./utils/BooksAPI"
 import If from "./hoc/If"
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -15,12 +15,12 @@ import './App.css'
 
 class App extends Component {
   state = {
-    shelfs: [
+    shelfList: [
       {name: 'Currently Reading', type: 'currentlyReading'},
       {name: 'Want to Read', type: 'wantToRead'},
       {name: 'Read', type: 'read'}
     ],
-    books: [],
+    bookList: [],
     book: null,
     searchedBooks: [],
     updatedBook: null,
@@ -32,9 +32,21 @@ class App extends Component {
 
   componentDidMount() {
     getAll().then(books => {
-      this.getBooks(books)
+      this.setBookList(books)
       this.changeLoading(false)
     })
+  }
+
+  setBookList = (bookList) => {
+    this.setState({bookList})
+  }
+
+  setSearchedBooks = (searchedBooks) => {
+    this.setState({searchedBooks})
+  }
+
+  setUpdatedBook = (updatedBook) => {
+    this.setState({updatedBook})
   }
 
   changeLoading = (status) => {
@@ -45,33 +57,21 @@ class App extends Component {
     this.setState({bookLoader: status})
   }
 
-  getBooks = (books) => {
-    this.setState({books})
-  }
-
-  getSearchedBooks = (searchedBooks) => {
-    this.setState({searchedBooks})
-  }
-
-  setUpdatedBook = (updatedBook) => {
-    this.setState({updatedBook})
-  }
-
   bookShelfChange = (book, shelf) => {
     this.changeBookLoader(true)
     this.setUpdatedBook(book)
 
     update(book, shelf).then(() => {
       book.shelf = shelf
-      let updatedBooks = this.state.books.filter(bk => bk.id !== book.id)
+      let updatedBooks = this.state.bookList.filter(bk => bk.id !== book.id)
       updatedBooks.push(book)
-      this.setState({books: updatedBooks})
+      this.setState({bookList: updatedBooks})
       this.changeBookLoader(false)
     })
   }
 
   bookShelfType = (shearchedBook) => {
-    const bookShelf = this.state.books
+    const bookShelf = this.state.bookList
       .find(shelfBook =>
         shelfBook.id === shearchedBook.id
       )
@@ -82,7 +82,7 @@ class App extends Component {
     this.changeLoading(true)
     let searchText = target.value || ' '
     search(searchText).then(books => {
-      this.getSearchedBooks(books.error ? [] : books)
+      this.setSearchedBooks(books.error ? [] : books)
       this.changeLoading(false)
     })
   }
@@ -121,13 +121,13 @@ class App extends Component {
           <Route exact path="/" render={props =>
             <BookShelfList
               {...props}
-              shelfs={this.state.shelfs}
-              books={this.state.books}
+              shelfs={this.state.shelfList}
+              books={this.state.bookList}
               loading={this.state.loading}
               updatedBook={this.state.updatedBook}
               bookLoader={this.state.bookLoader}
               changeLoading={this.changeLoading}
-              getBooks={this.getBooks}
+              getBooks={this.setBookList}
               bookShelfChange={this.bookShelfChange}
               modalToggle={this.handleModalOpen}
             />
@@ -135,14 +135,14 @@ class App extends Component {
           <Route path="/search" render={props =>
             <SearchBooks
               {...props}
-              shelfs={this.state.shelfs}
+              shelfs={this.state.shelfList}
               searchedBooks={this.state.searchedBooks}
               loading={this.state.loading}
-              books={this.state.books}
+              books={this.state.bookList}
               updatedBook={this.state.updatedBook}
               bookLoader={this.state.bookLoader}
               changeLoading={this.changeLoading}
-              getSearchedBooks={this.getSearchedBooks}
+              getSearchedBooks={this.setSearchedBooks}
               setUpdatedBook={this.setUpdatedBook}
               changeBookLoader={this.changeBookLoader}
               bookShelfChange={this.bookShelfChange}
